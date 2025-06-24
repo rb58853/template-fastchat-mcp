@@ -1,0 +1,9 @@
+{
+    "mcp_servers": {
+        "public-example-server": {
+            "http": "http://0.0.0.0:8000/public-example-server/mcp",
+            "name": "public-example-server",
+            "description": "This server specializes in public operations of user profiles data."
+        }
+    }
+}
