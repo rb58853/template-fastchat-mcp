@@ -29,18 +29,18 @@ Follow the steps below to install and set up your development environment:
 
 ### 1. Clone the repository
 
-    ```shell
-    git clone https://github.com/rb58853/template_mcp_llm_client.git
-    ```
+```shell
+git clone https://github.com/rb58853/template_mcp_llm_client.git
+```
 
 ### 2. Install dependencies
 
-    ```shell
-    cd template_mcp_llm_client
-    pip install -r requirements.txt
-    ```
+```shell
+cd template_mcp_llm_client
+pip install -r requirements.txt
+```
 
-### 3. Servers
+### 3. Optional Servers
 
 Optionally, you may install test MCP servers available in the [simple-mcp-server](https://github.com/rb58853/simple-mcp-server) repository. To do so from the terminal, open a terminal window in the directory where you wish to clone the test server project and then execute the following commands. This will start a functional Docker container with your MCP and OAuth servers.
 
