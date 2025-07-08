@@ -42,25 +42,25 @@ Follow the steps below to install and set up your development environment:
 
 ### 3. Servers
 
-Opcionalmente puede instalar servidores MCP de pruebas que se encuentran en el repositorio [simple-mcp-server](https://github.com/rb58853/simple-mcp-server). Para hacerlo desde la terminal, debes abrir una terminal en la direccion donde quieras clonar el proyecto con servidor de prueba y luego escribir lo siguiente. Esto levantara un contenedor de docker funcional con tus servidores MCP y OAuth
+Optionally, you may install test MCP servers available in the [simple-mcp-server](https://github.com/rb58853/simple-mcp-server) repository. To do so from the terminal, open a terminal window in the directory where you wish to clone the test server project and then execute the following commands. This will start a functional Docker container with your MCP and OAuth servers.
 
 ```shell
-# Clonar el repositorio
+# Clone the repository
 git clone https://github.com/rb58853/simple-mcp-server
 
-# Entrar al directorio del proyecto
+# Enter the project directory
 cd simple-mcp-server
 
-# Crear el archivo .env con las variables de entorno
+# Create the .env file with environment variables
 cat <<EOF > .env
 SUPERUSERNAME=user
 SUPERUSERPASSWORD=password
 EOF
 
-# Instalar las dependencias de Python
+# Install Python dependencies
 pip install -r requirements.txt
 
-# Levantar el contenedor Docker con build
+# Start the Docker container with build
 docker compose -f docker-compose.yml up -d --build
 ```
 
