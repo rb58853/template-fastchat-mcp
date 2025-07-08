@@ -27,18 +27,42 @@ This project provides a minimal structure to test the [`mcp-llm-client`](https:/
 
 Follow the steps below to install and set up your development environment:
 
-1. **Clone the repository**
+### 1. Clone the repository
 
     ```shell
     git clone https://github.com/rb58853/template_mcp_llm_client.git
     ```
 
-2. **Install dependencies**
+### 2. Install dependencies
 
     ```shell
     cd template_mcp_llm_client
     pip install -r requirements.txt
     ```
+
+### 3. Servers
+
+Opcionalmente puede instalar servidores MCP de pruebas que se encuentran en el repositorio [simple-mcp-server](https://github.com/rb58853/simple-mcp-server). Para hacerlo desde la terminal, debes abrir una terminal en la direccion donde quieras clonar el proyecto con servidor de prueba y luego escribir lo siguiente. Esto levantara un contenedor de docker funcional con tus servidores MCP y OAuth
+
+```shell
+# Clonar el repositorio
+git clone https://github.com/rb58853/simple-mcp-server
+
+# Entrar al directorio del proyecto
+cd simple-mcp-server
+
+# Crear el archivo .env con las variables de entorno
+cat <<EOF > .env
+SUPERUSERNAME=user
+SUPERUSERPASSWORD=password
+EOF
+
+# Instalar las dependencias de Python
+pip install -r requirements.txt
+
+# Levantar el contenedor Docker con build
+docker compose -f docker-compose.yml up -d --build
+```
 
 ## Configuration
 
@@ -48,21 +72,41 @@ Edit the [config.json](config.json) file to add the MCP servers you intend to us
 
 Example configuration:
 
-    {
-        "mcp_servers": {
-            "public-example-server": {
-                "http": "http://0.0.0.0:8000/public-example-server/mcp",
-                "name": "public-example-server",
-                "description": "This server specializes in operations with numbers, such as addition and text conversion."
+```json
+{
+    "mcp_servers": {
+        "example_public_server": {
+            "transport": "httpstream",
+            "httpstream-url": "http://127.0.0.1:8000/public-example-server/mcp",
+            "name": "example-public-server",
+            "description": "Example public server."
+        },
+        "example_private_mcp": {
+            "transport": "httpstream",
+            "httpstream-url": "http://127.0.0.1:8000/private-example-server/mcp",
+            "name": "example-private-server",
+            "description": "Example private server with oauth required.",
+            "auth": {
+                "required": true,
+                "server": "http://127.0.0.1:9000",
+                "secrets": {
+                    "username": "user",
+                    "password": "password"
+                }
             }
         }
     }
+}
+```
 
 ### 2. Environment Variables Configuration
 
 Add your OpenAI API key to the [.env](.env) file:
 
 ```env
+#CRIPTOGRAFY_KEY by token data storage
+CRIPTOGRAFY_KEY=oBd-k41TmMqib1QYalke7HRCbk_HOtE0nw1YcdkibPc=
+
 # OpenAI Authentication
 OPENAI_API_KEY=<your_openai_api_key>
 ```
