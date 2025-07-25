@@ -74,6 +74,7 @@ Example configuration:
 
 ```json
 {
+    "app_name": "example-template",
     "mcp_servers": {
         "example_public_server": {
             "transport": "httpstream",
@@ -88,8 +89,7 @@ Example configuration:
             "description": "Example private server with oauth required.",
             "auth": {
                 "required": true,
-                "server": "http://127.0.0.1:9000",
-                "secrets": {
+                "post_body": {
                     "username": "user",
                     "password": "password"
                 }
