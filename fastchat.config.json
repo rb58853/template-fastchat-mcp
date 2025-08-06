@@ -2,13 +2,13 @@
     "app_name": "example-template",
     "mcp_servers": {
         "example_public_server": {
-            "transport": "httpstream",
+            "protocol": "httpstream",
             "httpstream-url": "http://127.0.0.1:8000/public-example-server/mcp",
             "name": "example-public-server",
             "description": "Example public server."
         },
         "example_private_mcp": {
-            "transport": "httpstream",
+            "protocol": "httpstream",
             "httpstream-url": "http://127.0.0.1:8000/private-example-server/mcp",
             "name": "example-private-server",
             "description": "Example private server with oauth required.",
